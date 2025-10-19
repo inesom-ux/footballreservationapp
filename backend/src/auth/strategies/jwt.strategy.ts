@@ -19,12 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  /**
-   * @method validate
-   * @description Called automatically by Passport to validate the JWT payload
-   * @param payload - Decoded JWT payload
-   * @returns User object to attach to req.user
-   */
+  // called automatically by Passport to validate the JWT payload and User object to attach to req.user
   async validate(payload: any): Promise<Partial<User>> {
 
     // fetch full user info from DB
@@ -32,9 +27,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!user) {
       throw new UnauthorizedException('Invalid token or user does not exist');
     }
+    const userObject = (user as any).toObject ? (user as any).toObject() : user;
 
     // exclude sensitive fields before attaching to req.user
-    const { password, ...result } = user;
+    const { password, ...result } = userObject;
     return result;
   }
 }
