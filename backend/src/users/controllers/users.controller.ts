@@ -11,13 +11,13 @@ import {
   UseGuards,
   BadRequestException,
 } from '@nestjs/common';
-import { UsersService } from '../../services/users/users.service';
-import { CreateUserDto } from '../../dto/create-user.dto';
-import { UpdateUserDto } from '../../dto/update-user.dto';
-import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
-import { RolesGuard } from '../../../auth/guards/roles.guard';
-import { Roles } from '../../../auth/decorators/roles.decorator';
-import { UserRole } from '../../../auth/enums/roles.enum';
+import { UsersService } from '../services/users.service';
+import { CreateUserDto } from '../dto/create-user.dto';
+import { UpdateUserDto } from '../dto/update-user.dto';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../../auth/guards/roles.guard';
+import { Roles } from '../../auth/decorators/roles.decorator';
+import { UserRole } from '../../auth/enums/roles.enum';
 
 @Controller('users')
 @UseGuards(JwtAuthGuard, RolesGuard)
@@ -30,22 +30,16 @@ export class UsersController {
     if (!user) return undefined;
     if (typeof user === 'string') return user;
     // common fields
-    if (user.id) return String(user.id);
     if (user._id) return String(user._id);
-    if (user.sub) return String(user.sub);
 
     // Mongoose document: try toObject()
     if (typeof user.toObject === 'function') {
       try {
         const obj = user.toObject();
-        if (obj.id) return String(obj.id);
         if (obj._id) return String(obj._id);
-        if (obj.sub) return String(obj.sub);
         if (obj._doc) {
           const d = obj._doc;
-          if (d.id) return String(d.id);
           if (d._id) return String(d._id);
-          if (d.sub) return String(d.sub);
         }
       } catch (e) {
         // ignore and continue
@@ -55,9 +49,7 @@ export class UsersController {
     // direct _doc access
     if (user._doc) {
       const d = user._doc;
-      if (d.id) return String(d.id);
       if (d._id) return String(d._id);
-      if (d.sub) return String(d.sub);
     }
 
     return undefined;
