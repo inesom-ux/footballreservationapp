@@ -6,10 +6,10 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { UsersService } from '../../../users/services/users/users.service';
-import { RegisterDto } from '../../dto/register.dto';
-import { LoginDto } from '../../dto/login.dto';
-import { User } from '../../../users/entities/users.entity';
+import { UsersService } from '../../users/services/users.service';
+import { RegisterDto } from '../dto/register.dto';
+import { LoginDto } from '../dto/login.dto';
+import { User } from '../../users/entities/users.entity';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()

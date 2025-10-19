@@ -29,7 +29,7 @@ export class RegisterDto {
   @IsNotEmpty({ message: 'Please confirm your password' })
   confirmPassword: string;
 
-  @IsOptional()
+  @IsNotEmpty({ message: 'Phone number is required' })
   @IsString()
   phoneNumber?: string;
 
