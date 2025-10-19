@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
@@ -22,27 +23,22 @@ import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { UserRole } from 'src/auth/enums/roles.enum';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { Public } from 'src/auth/decorators/public.decorator';
-
 @Controller('stadium')
 export class StadiumController {
   constructor(private readonly stadiumService: StadiumService) {}
 
   // ================= Create a stadium =================
   @Post()
-  @UseGuards(JwtAuthGuard)
-  @UseGuards(RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   async create(@Req() req: any, @Body() createStadiumDto: CreateStadiumDto) {
     try {
       return await this.stadiumService.create(createStadiumDto);
     } catch (error: any) {
-      // If service threw a Nest HttpException (e.g., ConflictException), rethrow so client gets proper status
+      // If service threw a Nest HttpException (for example ConflictException), rethrow so client gets proper status
       if (error instanceof HttpException) {
         throw error;
       }
-      // Log full unexpected error and return 500
-      console.error('Error creating stadium:', error);
       throw new InternalServerErrorException('Failed to create stadium');
     }
   }
@@ -50,8 +46,7 @@ export class StadiumController {
   // ================= Get all stadiums or filter =================
   @Get()
   async findAll(@Query() query: QueryStadiumDto) {
-    // @Query() maps query parameters (e.g., /stadiums?name=Arena&location=Paris) to DTO
-    console.debug('Stadium findAll query:', query);
+    // @Query() maps query parameters (example: /stadiums?name=Arena&location=Paris) to DTO
     return this.stadiumService.find(query);
   }
 
@@ -59,24 +54,29 @@ export class StadiumController {
   @Get(':id')
   async findOne(@Param('id') id: string) {
     // @Param('id') maps the route parameter to the method argument
-    console.debug('Stadium findOne id:', id);
     return this.stadiumService.findOne(id);
   }
 
   // ================= Update a stadium =================
   @Patch(':id')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN) // Only authenticated users (admins) can update
+  @Roles(UserRole.ADMIN)
   async update(
     @Param('id') id: string,
     @Body() updateStadiumDto: UpdateStadiumDto,
   ) {
-    return this.stadiumService.update(id, updateStadiumDto);
+  try {
+    const result = await this.stadiumService.update(id, updateStadiumDto);
+    return result;
+  } catch (error) {
+    console.error('Controller - Update failed:', error.message);
+    throw error;
+  }
   }
 
   // ================= Delete a stadium =================
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(UserRole.ADMIN) // Only authenticated users (admins) can delete
+  @Roles(UserRole.ADMIN)
   @HttpCode(HttpStatus.NO_CONTENT) // Returns 204 on success
   @Delete(':id')
   async remove(@Param('id') id: string) {

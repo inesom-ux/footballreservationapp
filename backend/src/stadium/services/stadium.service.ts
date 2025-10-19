@@ -1,11 +1,13 @@
+/* eslint-disable prettier/prettier */
 import {
   Injectable,
   NotFoundException,
   ConflictException,
   InternalServerErrorException,
+  BadRequestException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { isValidObjectId, Model } from 'mongoose';
 import { Stadium, StadiumDocument } from '../entities/stadium.entity';
 import { CreateStadiumDto } from '../dto/create-stadium.dto';
 import { UpdateStadiumDto } from '../dto/update-stadium.dto';
@@ -24,7 +26,7 @@ export class StadiumService {
     try {
       return await newStadium.save();
     } catch (err: any) {
-      // handle duplicate key (name unique) gracefully
+      // handle duplicate key (name unique)
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (err && (err.code === 11000 || err.code === '11000')) {
         throw new ConflictException('Stadium with this name already exists');
@@ -82,12 +84,18 @@ export class StadiumService {
   }
 
   // Update stadium by ID
-  async update(
-    id: string,
-    updateStadiumDto: UpdateStadiumDto,
-  ): Promise<Stadium> {
-    const updated = await this.stadiumModel
-      .findByIdAndUpdate(id, updateStadiumDto, {
+  async update(id: string, updateStadiumDto: UpdateStadiumDto): Promise<Stadium> {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException('Invalid stadium ID format');
+    }
+
+    // Check if stadium exists first
+    const exists = await this.stadiumModel.findById(id).exec();
+    if (!exists) {
+      throw new NotFoundException(`Stadium with ID ${id} not found`);
+    }
+    
+    const updated = await this.stadiumModel.findByIdAndUpdate(id, updateStadiumDto, {
         new: true, // return the updated document
         runValidators: true, // run schema validators
       })
@@ -102,7 +110,7 @@ export class StadiumService {
   async delete(id: string): Promise<{ message: string }> {
     const deleted = await this.stadiumModel.findByIdAndDelete(id).exec();
     if (!deleted)
-      throw new NotFoundException(`Stadium with ID ${id} not found`);
+      throw new NotFoundException(`Stadium not found`);
     return { message: 'Stadium deleted successfully' };
   }
 }
