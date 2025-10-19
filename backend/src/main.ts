@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
@@ -5,9 +6,8 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  // Simple request logger to help diagnose routing issues
+  // we added this request logger to help diagnose routing issues
   app.use((req: any, res: any, next: () => void) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     console.debug('Incoming HTTP', req.method, req.url);
     next();
   });
