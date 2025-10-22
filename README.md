@@ -10,7 +10,8 @@
 **Backend :** Nous avons ajouté les deux modules stadium + Session and on travaille maintenant sur le module reservation (Devision du paiement, inviter des utilisateurs qui ne sont pas encore inscris, etc)<br>
 **FrontEnd :** Nous avons travaillé sur les pages de login/register (a l aide de tailwindcss) ainsi que les fonctionallités de ces pages et les relier avec le backend, et on travaille aussi sur la page Home (en cours)<br>
 **Logo :** Nous avons designé le logo de notre application nous meme <br>
-![App Logo](Screenshots/logo.png)<br>
+<br>
+<img src="Screenshots/logo.png" alt="GoalTime Logo" width="300"><br>
 
 <br>
 voila qlq screens de nos pages :<br>
