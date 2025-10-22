@@ -1,4 +1,4 @@
-# footballreservationapp<br>
+# Football Reservation App (GoalTime)<br>
 
 **Groupe 1** <br>
 -Ines ould amar<br>
@@ -24,7 +24,8 @@ voila qlq screen de nos pages :<br>
 **- Home Page (En cours):** <br>
 
 ![App Logo](Screenshots/home%20page.jpg)<br>
-
+<br>
 ![App Logo](Screenshots/home%20page%202.jpg)<br>
-
+<br>
 ![App Logo](Screenshots/home%20page%203.jpg)<br>
+<br>
