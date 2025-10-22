@@ -9,6 +9,7 @@
 
 **Backend :** Nous avons ajouté les deux modules stadium + Session and on travaille maintenant sur le module reservation<br>
 **FrontEnd :** Nous avons travaillé sur les pages de login/register (a l aide de tailwindcss) ainsi que les fonctionallités de ces pages et les relier avec le backend.<br>
+**Logo :** Nous avons designé le logo de notre application nous meme <br>
 <br>
 voila qlq screen de nos pages :<br>
 
