@@ -6,4 +6,4 @@
 -Salaheddin Ben Hammich
 
 
-![App Logo](Screenshots/logo%20page.png)
+![App Logo](Screenshots/logo%20page.jpg)
