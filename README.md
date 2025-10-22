@@ -7,17 +7,17 @@
 
 **Last Updates 22/10/2025:** <br>
 
-**Backend :** Nous avons ajouté les deux modules stadium + Session and on travaille maintenant sur le module reservation<br>
-**FrontEnd :** Nous avons travaillé sur les pages de login/register (a l aide de tailwindcss) ainsi que les fonctionallités de ces pages et les relier avec le backend.<br>
+**Backend :** Nous avons ajouté les deux modules stadium + Session and on travaille maintenant sur le module reservation (Devision du paiement, inviter des utilisateurs qui ne sont pas encore inscris, etc)<br>
+**FrontEnd :** Nous avons travaillé sur les pages de login/register (a l aide de tailwindcss) ainsi que les fonctionallités de ces pages et les relier avec le backend, et on travaille aussi sur la page Home (en cours)<br>
 **Logo :** Nous avons designé le logo de notre application nous meme <br>
 <br>
-voila qlq screen de nos pages :<br>
+voila qlq screens de nos pages :<br>
 
 **Login Page :** <br>
 
 ![App Logo](Screenshots/Login%20Page.jpg)<br>
 <br>
-**- Login Page : Si on fait un erreur dans une Input:** <br>
+**- Login Page : Si on fait une erreur dans une Input:** <br>
 
 ![App Logo](Screenshots/Login%20Page%202.jpg)<br>
 <br>
