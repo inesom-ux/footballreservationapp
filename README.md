@@ -1,4 +1,4 @@
-# Football Reservation App (GoalTime)<br>
+# Football Reservation App (GoalTime) 
 
 **Groupe 1** <br>
 -Ines ould amar<br>
@@ -18,18 +18,7 @@
 <br>
 voila qlq screens de nos pages :<br>
 
-**Login Page :** <br>
-
-![App Logo](Screenshots/Login%20Page.jpg)<br>
-<br>
-**- Login Page : Si on fait une erreur dans une Input:** <br>
-
-![App Logo](Screenshots/Login%20Page%202.jpg)<br>
-<br>
-**- Register Page :** <br>
-
-![App Logo](Screenshots/sign%20up.jpg)<br>
-<br>
+# USER INTERFACE
 **- Home Page :** <br>
 
 ![App Logo](Screenshots/Home1.PNG)<br>
@@ -56,6 +45,19 @@ voila qlq screens de nos pages :<br>
 
 ![App Logo](Screenshots/Footer.PNG)<br>
 
+<br>
+
+**Login Page :** <br>
+
+![App Logo](Screenshots/Login%20Page.jpg)<br>
+<br>
+**- Login Page : Si on fait une erreur dans une Input:** <br>
+
+![App Logo](Screenshots/Login%20Page%202.jpg)<br>
+<br>
+**- Register Page :** <br>
+
+![App Logo](Screenshots/sign%20up.jpg)<br>
 <br>
 
 **- Stadiums Page :** <br>
@@ -125,6 +127,15 @@ voila qlq screens de nos pages :<br>
 ![App Logo](Screenshots/contact.PNG)<br>
 
 <br>
+
+**- Profile Page :** <br>
+<br>
+
+![App Logo](Screenshots/profile.PNG)<br>
+
+<br>
+
+# ADMIN INTERFACE
 
 **- ADMIN-Dashboard :** <br>
 <br>
