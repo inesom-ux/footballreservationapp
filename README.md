@@ -44,15 +44,12 @@ voila qlq screens de nos pages :<br>
 
 <br>
 
-![App Logo](Screenshots/DarkTheme.PNG)<br>
-
-<br>
-
-<br>
+**- DarkTheme Option :** <br>
 
 ![App Logo](Screenshots/DarkTheme.PNG)<br>
 
 <br>
+
 
 **- Footer :** <br>
 <br>
